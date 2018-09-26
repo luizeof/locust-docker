@@ -6,13 +6,15 @@ RUN mkdir locust-tasks
 
 COPY locust-tasks /locust-tasks
 
+COPY run.sh /
+
 WORKDIR /locust-tasks
 
 RUN apt-get install g++
 
 RUN pip install locustio pyzmq
 
-RUN chmod 755 run.sh
+RUN chmod 755 /run.sh
 
 EXPOSE 5557 5558 8089
 
