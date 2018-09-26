@@ -4,15 +4,12 @@ class UserBehavior(TaskSet):
         """ on_start is called when a Locust start before
             any task is scheduled
         """
-        self.login()
-    def login(self):
+        self.mtracking()
+    def mtracking(self):
         self.client.get("/mtracking.gif")
-    @task(2)
-    def index(self):
-        self.client.get("/mtc.js")
     @task(1)
-    def profile(self):
-        self.client.get("/profile")
+    def mtc(self):
+        self.client.post("/mtc.js")
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
     min_wait = 5000
